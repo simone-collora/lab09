@@ -23,7 +23,7 @@ public final class AnotherConcurrentGUI extends JFrame {
     private final JButton stopButton = new JButton("Stop");
     private static final double WIDTH_PERC = 0.2;
     private static final double HEIGHT_PERC = 0.1;
-    private static final long TIME_IN_MILLIS = 10000;
+    private static final long TIME_IN_MILLIS = 100_00;
 
      /**
      * Builds a new CGUI.
