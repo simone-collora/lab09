@@ -14,20 +14,24 @@ import javax.swing.SwingUtilities;
 /**
  * Third experiment with reactive gui.
  */
-
+@SuppressWarnings("PMD")
 public final class AnotherConcurrentGUI extends JFrame {
     private static final long serialVersionUID = 1L;
     private final JLabel display = new JLabel();
     private final JButton upButton = new JButton("Up");
     private final JButton downButton = new JButton("Down");
     private final JButton stopButton = new JButton("Stop");
-    private final int wi = 5;
-    private final long time = 10000;
+    private static final double WIDTH_PERC = 0.2;
+    private static final double HEIGHT_PERC = 0.1;
+    private static final long TIME_IN_MILLIS = 10000;
 
+     /**
+     * Builds a new CGUI.
+     */
     public AnotherConcurrentGUI() {
         super();
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setSize((int) (screenSize.getWidth() / wi), (int) (screenSize.getHeight() / wi));
+        this.setSize((int) (screenSize.getWidth() / WIDTH_PERC), (int) (screenSize.getHeight() / HEIGHT_PERC));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         final JPanel panel = new JPanel();
         panel.add(upButton);
@@ -44,7 +48,7 @@ public final class AnotherConcurrentGUI extends JFrame {
         downButton.addActionListener((e) -> agent.downCounting());
         new Thread(() -> {
             try {
-                Thread.sleep(time);
+                Thread.sleep(TIME_IN_MILLIS);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
@@ -81,9 +85,9 @@ public final class AnotherConcurrentGUI extends JFrame {
         }
 
         public void stopCounting() {
-            this.stop = true;
             upButton.setEnabled(false);
             downButton.setEnabled(false);
+            this.stop = true;
         }
 
         public void upCounting() {

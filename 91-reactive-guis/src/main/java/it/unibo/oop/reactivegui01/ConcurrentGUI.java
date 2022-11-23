@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
  * This shows an alternative solutions using lambdas
  */
 
+@SuppressWarnings("PMD")
 public final class ConcurrentGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
